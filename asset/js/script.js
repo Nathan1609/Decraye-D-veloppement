@@ -38,10 +38,48 @@ document.getElementById('year').textContent = new Date().getFullYear();
     // Smooth scroll sur les liens ancre
     document.querySelectorAll('a[href^="#"]').forEach(a => {
       a.addEventListener('click', e => {
-        const target = document.querySelector(a.getAttribute('href'));
+        const href = a.getAttribute('href');
+        if (href === '#') return;
+        const target = document.querySelector(href);
         if (target) {
           e.preventDefault();
           target.scrollIntoView({ behavior: 'smooth', block: 'start' });
         }
       });
     });
+
+// Formulaire de contact : envoi vers nathan@decrayedeveloppement.be via FormSubmit
+const form = document.getElementById('contactForm');
+if (form) {
+  const status = document.getElementById('formStatus');
+  const submitBtn = form.querySelector('button[type="submit"]');
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    status.className = 'form-status';
+    if (!form.checkValidity()) {
+      status.textContent = 'Merci de remplir tous les champs avec une adresse e-mail valide.';
+      status.classList.add('err');
+      return;
+    }
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Envoi en cours…';
+    try {
+      const res = await fetch(form.action.replace('formsubmit.co/', 'formsubmit.co/ajax/'), {
+        method: 'POST',
+        headers: { 'Accept': 'application/json' },
+        body: new FormData(form)
+      });
+      const data = await res.json();
+      if (!res.ok || data.success === 'false') throw new Error();
+      form.reset();
+      status.textContent = 'Merci, votre message a bien été envoyé. Je vous réponds rapidement.';
+      status.classList.add('ok');
+    } catch (err) {
+      status.textContent = "L'envoi a échoué. Écrivez-moi directement à nathan@decrayedeveloppement.be.";
+      status.classList.add('err');
+    } finally {
+      submitBtn.disabled = false;
+      submitBtn.textContent = 'Envoyer le message';
+    }
+  });
+}

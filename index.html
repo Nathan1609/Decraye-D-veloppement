@@ -17,6 +17,7 @@
       <!-- ✏️ Remplacez "votrenom." par votre nom/marque -->
       <a href="#" class="nav-logo">
         <img src="asset/img/logo.png" alt="Logo de Decraye Développement">
+        <span class="nav-badge">Disponible</span>
       </a>
 
       <ul class="nav-links">
@@ -28,9 +29,6 @@
         </li>
         <li>
           <a href="#methode">Ma Méthode</a>
-        </li>
-        <li>
-          <a href="#blog">Blog</a>
         </li>
       </ul>
 
@@ -47,7 +45,7 @@
   <div class="mobile-menu" id="mobileMenu">
     <span class="close-btn" id="closeMenu">&times;</span>
     <a href="#services" onclick="closeMobile()">Services</a>
-    <a href="#apropos" onclick="closeMobile()">A Propos</a>
+    <a href="#about" onclick="closeMobile()">A Propos</a>
     <a href="#methode" onclick="closeMobile()">Ma Méthode</a>
     <a href="#contact" onclick="closeMobile()">Contact</a>
   </div>
@@ -67,7 +65,7 @@
     <!-- Texte bas gauche -->
     <div class="hero-content">
       <h1 class="hero-title">
-        Developpeur web<br />
+        Développeur web<br />
         &amp; Expert SEO
       </h1>
       <!-- ✏️ Modifiez votre accroche -->
@@ -125,7 +123,7 @@
             <div>
               <h3 class="svc-title">Web Design</h3>
               <p class="svc-desc">
-                Des prototypes premium et sur-mesure, adaptés aux besoins uniques de chaque client. Pas de surprise, vous validez le projets avant la création du site web.
+                Des prototypes premium et sur-mesure, adaptés aux besoins uniques de chaque client. Pas de surprise, vous validez le projet avant la création du site web.
               </p>
             </div>
           </div>
@@ -136,7 +134,7 @@
             <div>
               <h3 class="svc-title">Développement Web</h3>
               <p class="svc-desc">
-                Des Sites fonctionnels, visible et user-friendly.
+                Des sites rapides, agréables à utiliser et pensés pour être trouvés sur Google.
               </p>
             </div>
           </div>
@@ -307,7 +305,7 @@
 
         <!-- ✏️ Paragraphe 1 -->
         <p class="about-body">
-          Je suis un développeur web indépendant passionné, reconnu pour mes compétences en développement web et mon expertise en SEO. Fort d'une expérience acquise grâce à plusieurs projets de terrain,.
+          Je suis un développeur web indépendant passionné, reconnu pour mes compétences en développement web et mon expertise en SEO. Fort d'une expérience acquise grâce à plusieurs projets de terrain.
         </p>
 
         <!-- ✏️ Paragraphe 2 -->
@@ -331,9 +329,39 @@
       <p class="cta-eyebrow">Parlons de votre projet</p>
       <h2 class="cta-title">Faisons briller<br />votre <em>site web.</em></h2>
       <!-- ✏️ Remplacez l'email -->
-      <a href="mailto:nathan@decrayedeveloppement.be" class="btn btn-primary" style="font-size:1rem; padding: 1rem 2.5rem;">
-        Me contacter →
-      </a>
+      <form class="contact-form" id="contactForm" action="https://formsubmit.co/nathan@decrayedeveloppement.be" method="POST" novalidate>
+        <div class="form-row">
+          <div class="form-field">
+            <label for="prenom">Prénom</label>
+            <input type="text" id="prenom" name="Prénom" autocomplete="given-name" required>
+          </div>
+          <div class="form-field">
+            <label for="nom">Nom</label>
+            <input type="text" id="nom" name="Nom" autocomplete="family-name" required>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-field">
+            <label for="email">Adresse e-mail</label>
+            <input type="email" id="email" name="email" autocomplete="email" required>
+          </div>
+          <div class="form-field">
+            <label for="domaine">Domaine d'activité</label>
+            <input type="text" id="domaine" name="Domaine d'activité" placeholder="Ex. : restauration, immobilier…" required>
+          </div>
+        </div>
+        <div class="form-field">
+          <label for="message">Votre message</label>
+          <textarea id="message" name="Message" rows="5" required></textarea>
+        </div>
+        <!-- Anti-spam (champ invisible) et réglages FormSubmit -->
+        <input type="text" name="_honey" class="form-honey" tabindex="-1" autocomplete="off" aria-hidden="true">
+        <input type="hidden" name="_subject" value="Nouveau message depuis decrayedeveloppement.be">
+        <input type="hidden" name="_template" value="table">
+        <input type="hidden" name="_captcha" value="false">
+        <button type="submit" class="btn btn-primary form-submit">Envoyer le message</button>
+        <p class="form-status" id="formStatus" role="status" aria-live="polite"></p>
+      </form>
     </div>
   </section>
 
@@ -342,7 +370,7 @@
     <div class="container">
       <div class="footer-top">
         <div class="footer-brand">
-          <a href="#" class="nav-logo" style="font-family: var(--font-hero);">votrenom.</a>
+          <a href="#" class="nav-logo footer-logo"><img src="asset/img/logo.png" alt="Decraye Développement"></a>
           <p>Développeur web indépendant, spécialisé en design, développement et SEO.</p>
         </div>
         <div class="footer-col">
@@ -353,11 +381,11 @@
           <a href="#contact">Contact</a>
         </div>
         <div class="footer-col">
-          <h4>Projets</h4>
-          <a href="#work">Tous les projets</a>
-          <a href="#work">Web Design</a>
-          <a href="#work">Développement</a>
-          <a href="#work">SEO</a>
+          <h4>Services</h4>
+          <a href="#services">Web Design</a>
+          <a href="#services">Développement web</a>
+          <a href="#services">Contenu &amp; SEO</a>
+          <a href="#methode">Ma méthode</a>
         </div>
         <div class="footer-col">
           <h4>Réseaux</h4>
@@ -369,7 +397,7 @@
         </div>
       </div>
       <div class="footer-bottom">
-        <span>© <span id="year"></span> votrenom. Tous droits réservés.</span>
+        <span>© <span id="year"></span> Decraye Développement. Tous droits réservés.</span>
         <div class="social-links">
           <a href="https://linkedin.com" target="_blank" rel="noopener">LinkedIn</a>
           <a href="https://github.com" target="_blank" rel="noopener">GitHub</a>

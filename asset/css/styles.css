@@ -59,11 +59,13 @@ section { padding: 120px 0; }
 
 /* ======================== NAVBAR ======================== */
 .navbar {
+    position: fixed;
     top: 0; left: 0; right: 0;
     z-index: 100;
     padding: 0;
-    margin-top: 30px;
-    height: 64px;
+    margin-top: 0;
+    height: 94px;
+    padding-top: 30px;
     display: flex;
     align-items: center;
     transition: background var(--transition), border-color var(--transition);
@@ -74,6 +76,8 @@ section { padding: 120px 0; }
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
     border-color: var(--border);
+    padding-top: 0;
+    height: 72px;
 }
 .navbar .container {
     display: flex;
@@ -90,6 +94,8 @@ section { padding: 120px 0; }
     width: 20%;
 }
 /* Badge AVAILABLE vert — fidèle au screenshot */
+.nav-logo img { height: 56px; width: auto; max-width: none; }
+.footer-logo img { height: 72px; }
 .nav-badge {
     font-family: var(--font-body);
     font-size: 0.65rem;
@@ -534,7 +540,7 @@ section { padding: 120px 0; }
     content: attr(data-num);
     position: absolute;
     top: -20px; right: 20px;
-    font-family: var(--font-display);
+    font-family: var(--font-hero);
     font-size: 6rem;
     font-weight: 300;
     color: rgba(255,255,255,0.03);
@@ -545,7 +551,7 @@ section { padding: 120px 0; }
     background: var(--bg-3);
 }
 .process-num {
-    font-family: var(--font-display);
+    font-family: var(--font-hero);
     font-size: 0.8rem;
     color: var(--accent);
     letter-spacing: 0.08em;
@@ -829,6 +835,45 @@ section { padding: 120px 0; }
     margin-bottom: 2.5rem;
 }
 .cta-title em { font-style: italic; color: var(--accent); }
+
+
+/* ======================== FORMULAIRE DE CONTACT ======================== */
+.contact-form {
+    max-width: 680px;
+    margin: 0 auto;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+}
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; }
+.form-field { display: flex; flex-direction: column; gap: 0.5rem; }
+.form-field label { font-size: 0.8rem; color: var(--text-muted); }
+.form-field input, .form-field textarea {
+    width: 100%;
+    background: var(--bg-2);
+    border: 1px solid rgba(255,255,255,0.15);
+    border-radius: var(--radius);
+    padding: 0.9rem 1rem;
+    color: var(--text);
+    font-family: var(--font-body);
+    font-size: 0.95rem;
+    transition: border-color var(--transition);
+}
+.form-field textarea { resize: vertical; min-height: 140px; }
+.form-field input:focus-visible, .form-field textarea:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+    border-color: var(--accent);
+}
+.form-field input:user-invalid, .form-field textarea:user-invalid { border-color: #d96c6c; }
+.form-honey { position: absolute; left: -9999px; width: 1px; height: 1px; opacity: 0; }
+.form-submit { align-self: flex-start; font-size: 0.9rem; padding: 0.9rem 2rem; }
+.form-submit:disabled { opacity: 0.6; cursor: wait; }
+.form-status { min-height: 1.5rem; font-size: 0.9rem; }
+.form-status.ok { color: var(--green); }
+.form-status.err { color: #d96c6c; }
+@media (max-width: 600px) { .form-row { grid-template-columns: 1fr; } }
 
 /* ======================== FOOTER ======================== */
 footer {
